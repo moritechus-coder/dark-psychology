@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>خيوط الظل | علم النفس المظلم</title>
+<meta name="description" content="افهم أساليب التلاعب النفسي واحمِ نفسك منها.">
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0b12;--card:#171322;--line:#2c2540;--text:#e9e4d8;--mute:#a69fb8;--plum:#9b2c5a;--glow:#d6457f;--violet:#4a3470}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Tajawal',Tahoma,sans-serif;line-height:1.9;font-size:17px}
+h1,h2,h3{font-family:'Reem Kufi','Tajawal',sans-serif;line-height:1.4}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:960px;margin:auto;padding:0 20px}
+section{padding:70px 0}
+h2{font-size:2rem;margin-bottom:10px}
+.sub{color:var(--mute);margin-bottom:34px;max-width:60ch}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(13,11,18,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font-family:'Reem Kufi';font-size:1.3rem;font-weight:700}
+nav ul{display:flex;gap:18px;list-style:none;font-size:.95rem}
+nav ul a{color:var(--mute);transition:.2s}
+nav ul a:hover{color:var(--glow)}
+@media(max-width:640px){nav ul li:nth-child(n+4){display:none}}
+
+/* hero */
+.hero{min-height:88vh;display:grid;place-items:center;text-align:center;
+background:radial-gradient(circle at 50% 35%,#2a1740 0,transparent 60%)}
+.eye{width:150px;height:80px;margin:0 auto 30px;border-radius:50%/100%;border:2px solid var(--plum);
+display:grid;place-items:center;position:relative;overflow:hidden;box-shadow:0 0 40px rgba(214,69,127,.35)}
+.pupil{width:42px;height:42px;border-radius:50%;background:radial-gradient(circle,#000 30%,var(--glow) 32%,var(--plum) 100%);transition:transform .08s}
+.hero h1{font-size:clamp(2.2rem,7vw,4rem);margin-bottom:16px}
+.hero p{color:var(--mute);max-width:52ch;margin:0 auto 30px}
+
+/* glowing button (Uiverse style) */
+.btn{display:inline-block;padding:13px 34px;border-radius:50px;border:0;cursor:pointer;font:700 1rem 'Tajawal';
+color:#fff;background:linear-gradient(135deg,var(--plum),var(--violet));position:relative;transition:.3s}
+.btn::after{content:"";position:absolute;inset:0;border-radius:inherit;background:inherit;filter:blur(14px);opacity:.55;z-index:-1;transition:.3s}
+.btn:hover{transform:translateY(-3px)}
+.btn:hover::after{opacity:.95;filter:blur(20px)}
+.btn:focus-visible,summary:focus-visible,.opt:focus-visible{outline:2px solid var(--glow);outline-offset:3px}
+
+/* notice */
+.notice{border:1px solid var(--plum);background:rgba(155,44,90,.1);border-radius:14px;padding:18px 22px;margin-top:10px}
+
+/* topics */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}
+.topic{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;transition:.3s}
+.topic:hover{border-color:var(--glow);box-shadow:0 0 24px rgba(214,69,127,.18)}
+.topic h3{font-size:1.2rem;margin-bottom:6px}
+.topic p{color:var(--mute);font-size:.95rem}
+details summary{cursor:pointer;list-style:none;margin-top:12px;color:var(--glow);font-weight:700}
+details summary::-webkit-details-marker{display:none}
+details[open] summary{margin-bottom:8px}
+.topic ul{padding-right:18px;color:var(--text);font-size:.95rem}
+.topic b{color:var(--glow)}
+
+/* quiz */
+.quiz{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
+.q-count{color:var(--mute);font-size:.9rem;margin-bottom:8px}
+.q-text{font-size:1.1rem;margin-bottom:16px}
+.opt{display:block;width:100%;text-align:right;padding:12px 16px;margin-bottom:10px;border-radius:12px;
+background:#1f1a2e;border:1px solid var(--line);color:var(--text);font:inherit;cursor:pointer;transition:.2s}
+.opt:hover{border-color:var(--glow)}
+.opt.ok{background:#173a2a;border-color:#3ecf8e}
+.opt.no{background:#3b1624;border-color:#e05577}
+.explain{margin:12px 0;color:var(--mute)}
+.bar{height:6px;background:var(--line);border-radius:6px;margin-bottom:18px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--plum),var(--glow));transition:.4s}
+
+/* defense */
+.steps{display:grid;gap:14px;counter-reset:s}
+.step{background:var(--card);border-right:4px solid var(--plum);border-radius:12px;padding:16px 20px}
+.step h3{font-size:1.1rem}
+.step p{color:var(--mute);font-size:.95rem}
+
+/* faq */
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+.faq summary{margin:0;color:var(--text)}
+.faq p{color:var(--mute);margin-top:8px}
+
+/* contact */
+.contact{text-align:center}
+.insta{display:inline-flex;gap:10px;align-items:center;padding:13px 30px;border-radius:50px;font-weight:700;
+background:linear-gradient(45deg,#f09433,#dc2743,#bc1888);transition:.3s}
+.insta:hover{transform:scale(1.05);box-shadow:0 0 28px rgba(220,39,67,.5)}
+footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--mute);font-size:.9rem}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a href="#top" class="logo">خيوط الظل</a>
+  <ul>
+    <li><a href="#about">عن الموقع</a></li>
+    <li><a href="#topics">الأساليب</a></li>
+    <li><a href="#quiz">اختبر نفسك</a></li>
+    <li><a href="#defense">الحماية</a></li>
+    <li><a href="#faq">أسئلة</a></li>
+    <li><a href="#contact">تواصل</a></li>
+  </ul>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <div class="eye" id="eye"><div class="pupil" id="pupil"></div></div>
+  <h1>مَن يحرّك الخيوط في عقلك؟</h1>
+  <p>علم النفس المظلم هو دراسة الأساليب التي يستخدمها البعض للتأثير على الآخرين والتلاعب بهم. نتعلمها هنا لنكتشفها ونحمي أنفسنا منها، لا لنمارسها.</p>
+  <a href="#topics" class="btn">ابدأ الاكتشاف</a>
+</div></header>
+
+<section id="about"><div class="wrap">
+  <h2>ما هو علم النفس المظلم؟</h2>
+  <p class="sub">هو فرع من دراسة السلوك يهتم بالجانب الخفي من التأثير: التلاعب، الإيحاء، الضغط العاطفي، وسمات الشخصية الضارة.</p>
+  <div class="grid">
+    <div class="topic"><h3>لماذا نتعلمه؟</h3><p>من يعرف الأسلوب يلاحظه مبكراً. المتلاعب يعتمد على أن ضحيته لا ترى ما يحدث.</p></div>
+    <div class="topic"><h3>السمات المظلمة الثلاث</h3><p>النرجسية، والميكيافيلية (استغلال الناس لتحقيق الهدف)، والسيكوباتية (قلة التعاطف). تجتمع أحياناً في الشخص نفسه بدرجات مختلفة.</p></div>
+    <div class="topic"><h3>أين نراه؟</h3><p>في العلاقات والعمل والإعلانات ومواقع التواصل. ليس كل من يؤثر فيك متلاعباً، لكن الانتباه واجب.</p></div>
+  </div>
+  <div class="notice"><b>تنبيه:</b> المحتوى هنا للتوعية والحماية فقط. استخدام هذه الأساليب لإيذاء الناس أمر غير أخلاقي وقد يكون جريمة.</div>
+</div></section>
+
+<section id="topics"><div class="wrap">
+  <h2>أشهر أساليب التلاعب</h2>
+  <p class="sub">اضغط على كل بطاقة لتعرف علاماته وكيف تتصرف.</p>
+  <div class="grid">
+
+    <div class="topic"><h3>الإضاءة الغازية (Gaslighting)</h3>
+      <p>جعلك تشك في ذاكرتك وإدراكك حتى تفقد ثقتك بنفسك.</p>
+      <details><summary>التفاصيل</summary><ul>
+        <li><b>العلامات:</b> "أنت تتخيل"، "ما قلت هذا أبداً"، "أنت حساس زيادة".</li>
+        <li><b>الأثر:</b> ارتباك وقلق واعتماد على رأي المتلاعب.</li>
+        <li><b>الحل:</b> دوّن الأحداث، وراجعها مع شخص موثوق.</li></ul></details></div>
+
+    <div class="topic"><h3>القصف بالحب (Love Bombing)</h3>
+      <p>اهتمام وهدايا ومشاعر مبالغ فيها في بداية العلاقة لكسب التعلق بسرعة.</p>
+      <details><summary>التفاصيل</summary><ul>
+        <li><b>العلامات:</b> "أنت توأم روحي" بعد أسبوع، وإلحاح على الارتباط السريع.</li>
+        <li><b>الأثر:</b> تعلق عميق يتبعه برود أو تحكم.</li>
+        <li><b>الحل:</b> خذ وقتك، وراقب التصرفات لا الكلمات.</li></ul></details></div>
+
+    <div class="topic"><h3>التلاعب بالذنب</h3>
+      <p>تحميلك مسؤولية مشاعر الآخر ليحصل على ما يريد.</p>
+      <details><summary>التفاصيل</summary><ul>
+        <li><b>العلامات:</b> "بعد كل ما فعلته لأجلك؟"، "ستندم عندما أرحل".</li>
+        <li><b>الأثر:</b> تقبل ما لا تريده لتتجنب الشعور بالذنب.</li>
+        <li><b>الحل:</b> ميّز بين مسؤوليتك ومسؤوليته، وقل "لا" بهدوء.</li></ul></details></div>
+
+    <div class="topic"><h3>المعاملة الصامتة</h3>
+      <p>تجاهلك عمداً لمعاقبتك وإجبارك على التنازل.</p>
+      <details><summary>التفاصيل</summary><ul>
+        <li><b>العلامات:</b> صمت طويل بلا تفسير، ثم عودة عند تنازلك.</li>
+        <li><b>الأثر:</b> شعور بالنبذ والقلق.</li>
+        <li><b>الحل:</b> اعرض الحوار مرة واحدة، ولا تلاحق من يرفض التواصل.</li></ul></details></div>
+
+    <div class="topic"><h3>الباب في الوجه (Door in the Face)</h3>
+      <p>يطلب طلباً كبيراً يُرفض، ثم يطلب طلباً أصغر فتوافق عليه بسهولة.</p>
+      <details><summary>التفاصيل</summary><ul>
+        <li><b>أين؟</b> في المبيعات والتفاوض.</li>
+        <li><b>الأثر:</b> تشعر أنك "مدين" بالموافقة بعد الرفض الأول.</li>
+        <li><b>الحل:</b> قيّم الطلب الثاني وحده، كأنك لم تسمع الأول.</li></ul></details></div>
+
+    <div class="topic"><h3>الندرة المصطنعة</h3>
+      <p>"بقيت قطعتان فقط!" لدفعك إلى قرار متسرع.</p>
+      <details><summary>التفاصيل</summary><ul>
+        <li><b>أين؟</b> في الإعلانات والمتاجر الإلكترونية.</li>
+        <li><b>الأثر:</b> خوف من فوات الفرصة يعطّل التفكير.</li>
+        <li><b>الحل:</b> انتظر 24 ساعة قبل أي قرار شراء كبير.</li></ul></details></div>
+
+  </div>
+</div></section>
+
+<section id="quiz"><div class="wrap">
+  <h2>اختبر نفسك</h2>
+  <p class="sub">أربعة مواقف، اختر الأسلوب الصحيح في كل واحد.</p>
+  <div class="quiz">
+    <div class="bar"><i id="prog"></i></div>
+    <div id="qbox"></div>
+  </div>
+</div></section>
+
+<section id="defense"><div class="wrap">
+  <h2>كيف تحمي نفسك</h2>
+  <p class="sub">خمس عادات تقلل فرصة التلاعب بك.</p>
+  <div class="steps">
+    <div class="step"><h3>اعرف قيمتك وحدودك</h3><p>من يعرف ما يقبله وما يرفضه يصعب الضغط عليه.</p></div>
+    <div class="step"><h3>أبطئ قرارك</h3><p>المتلاعب يحتاج سرعتك. قل: "سأفكر وأرد عليك".</p></div>
+    <div class="step"><h3>راقب النمط لا الموقف</h3><p>الخطأ الواحد يحدث. تكراره بنفس الطريقة هو الإنذار.</p></div>
+    <div class="step"><h3>احتفظ بدائرة دعم</h3><p>أصدقاء وأسرة تحكي لهم. العزلة هدف المتلاعب الأول.</p></div>
+    <div class="step"><h3>اطلب المساعدة المتخصصة</h3><p>إذا كنت في علاقة مؤذية، تحدث مع أخصائي نفسي.</p></div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap faq">
+  <h2>أسئلة شائعة</h2>
+  <p class="sub">إجابات سريعة لأكثر ما يُسأل.</p>
+  <details><summary>هل علم النفس المظلم شرّ؟</summary><p>لا. هو معرفة، والمهم كيف تستخدمها. هنا نستخدمها للحماية والوعي.</p></details>
+  <details><summary>هل كل إقناع تلاعب؟</summary><p>لا. الإقناع الصادق يعرض الحقائق ويترك لك الحرية. التلاعب يخفي الحقيقة ويضغط عليك.</p></details>
+  <details><summary>كيف أعرف أنني ضحية تلاعب؟</summary><p>إذا شعرت بالارتباك والذنب والخوف باستمرار قرب شخص معين، وبدأت تشك في نفسك، فانتبه.</p></details>
+  <details><summary>هل يمكن أن أتلاعب بالآخرين دون قصد؟</summary><p>نعم أحياناً. المراجعة الصادقة لسلوكنا تساعدنا على التوقف وتصحيح الأسلوب.</p></details>
+</div></section>
+
+<section id="contact"><div class="wrap contact">
+  <h2>تابعنا</h2>
+  <p class="sub" style="margin-inline:auto">محتوى يومي مبسط عن النفس البشرية والوعي.</p>
+  <!-- غيّر الرابط التالي إلى حسابك -->
+  <a class="insta" href="https://www.instagram.com/m6a__r" target="_blank" rel="noopener">تابعنا على إنستغرام</a>
+</div></section>
+
+<footer><div class="wrap">© 2026 خيوط الظل. المحتوى للتوعية فقط ولا يغني عن استشارة مختص نفسي.</div></footer>
+
+<script>
+// pupil follows pointer
+var eye=document.getElementById('eye'),p=document.getElementById('pupil');
+function look(x,y){var r=eye.getBoundingClientRect(),dx=x-(r.left+r.width/2),dy=y-(r.top+r.height/2),
+d=Math.min(Math.hypot(dx,dy),300)/300,a=Math.atan2(dy,dx);
+p.style.transform='translate('+Math.cos(a)*d*45+'px,'+Math.sin(a)*d*14+'px)'}
+document.addEventListener('mousemove',function(e){look(e.clientX,e.clientY)});
+document.addEventListener('touchmove',function(e){look(e.touches[0].clientX,e.touches[0].clientY)});
+
+// quiz
+var Q=[
+{t:'شخص يقول لك: "ما قلت هذا أبداً، أنت تتخيل"، رغم أنك متأكد أنه قاله.',o:['القصف بالحب','الإضاءة الغازية','الندرة المصطنعة'],a:1,e:'هذا إنكار الواقع لتشك في ذاكرتك.'},
+{t:'متجر يعرض: "بقيت قطعة واحدة! العرض ينتهي بعد 5 دقائق".',o:['الندرة المصطنعة','المعاملة الصامتة','التلاعب بالذنب'],a:0,e:'الضغط الزمني يمنعك من التفكير.'},
+{t:'تعرفتَ على شخص قبل أسبوع وهو يقول: "لم أقابل مثلك قط، أريد أن نتزوج قريباً".',o:['الباب في الوجه','التلاعب بالذنب','القصف بالحب'],a:2,e:'عاطفة مفرطة وسريعة لكسب التعلق.'},
+{t:'"بعد كل ما ضحيت به لأجلك، تتركني الآن؟"',o:['التلاعب بالذنب','الإضاءة الغازية','الندرة المصطنعة'],a:0,e:'تحميلك ذنب مشاعره لتغيّر قرارك.'}];
+var i=0,score=0,box=document.getElementById('qbox'),prog=document.getElementById('prog');
+function show(){
+ if(i>=Q.length){prog.style.width='100%';
+  box.innerHTML='<div class="q-text">نتيجتك: '+score+' من '+Q.length+'</div><p class="explain">'+
+  (score>=3?'عينك فاحصة! استمر في المراقبة.':'راجع بطاقات الأساليب وأعد المحاولة.')+'</p><button class="btn" id="re">أعد الاختبار</button>';
+  document.getElementById('re').onclick=function(){i=0;score=0;show()};return}
+ var q=Q[i];prog.style.width=(i/Q.length*100)+'%';
+ box.innerHTML='<div class="q-count">السؤال '+(i+1)+' من '+Q.length+'</div><div class="q-text">'+q.t+'</div>';
+ q.o.forEach(function(o,k){var b=document.createElement('button');b.className='opt';b.textContent=o;
+  b.onclick=function(){var all=box.querySelectorAll('.opt');
+   all.forEach(function(x,j){x.disabled=true;if(j===q.a)x.classList.add('ok')});
+   if(k===q.a)score++;else b.classList.add('no');
+   var ex=document.createElement('p');ex.className='explain';ex.textContent=q.e;box.appendChild(ex);
+   var n=document.createElement('button');n.className='btn';n.textContent=i===Q.length-1?'النتيجة':'التالي';
+   n.onclick=function(){i++;show()};box.appendChild(n)};
+  box.appendChild(b)})}
+show();
+</script>
+</body>
+</html>
